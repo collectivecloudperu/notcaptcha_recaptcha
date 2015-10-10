@@ -7,7 +7,7 @@
         //check if other form details are correct
 
         //verify captcha
-        $recaptcha_secret = "6LdWhA4TAAAAAOWg056lwVaOD4y6vsmR0l_auLpy";
+        $recaptcha_secret = "CLAVE_SECRETA";
         $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$recaptcha_secret."&response=".$_POST['g-recaptcha-response']);
         $response = json_decode($response, true);
         if($response["success"] === true)
@@ -41,7 +41,7 @@
     <script type="text/javascript">
       var onloadCallback = function() {
         grecaptcha.render('html_element', {
-                  'sitekey' : '6LdWhA4TAAAAAHfSk-quwBhvhTrlnVHFF7Vb7Cmk',
+                  'sitekey' : 'CLAVE_DEL_SITIO',
                   'callback' : verifyCallback
                 });
          }
@@ -142,7 +142,7 @@
 				    </div>
 
 				    <label>Verificación :</label>
-              <div class="g-recaptcha" data-sitekey="6LdWhA4TAAAAAHfSk-quwBhvhTrlnVHFF7Vb7Cmk"></div>	
+              <div class="g-recaptcha" data-sitekey="CLAVE_DEL_SITIO"></div>	
 
               <br>
 
