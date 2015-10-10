@@ -2,11 +2,6 @@
 
   if($_SERVER["REQUEST_METHOD"] === "POST")
     {
-        //form submitted
-
-        //check if other form details are correct
-
-        //verify captcha
         $recaptcha_secret = "CLAVE_SECRETA";
         $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$recaptcha_secret."&response=".$_POST['g-recaptcha-response']);
         $response = json_decode($response, true);
@@ -41,6 +36,7 @@
     <script type="text/javascript">
       var onloadCallback = function() {
         grecaptcha.render('html_element', {
+          // colocamos la clave para el sitio, generada al crear la aplicacioón
                   'sitekey' : 'CLAVE_DEL_SITIO',
                   'callback' : verifyCallback
                 });
@@ -50,6 +46,7 @@
               };
         function valid() {          
 
+        // Validamos si los campos estan vacios y enviamos una alerta
         var nya = jQuery('#nya').val();
         var telefono = jQuery('#telefono').val();
         var email = jQuery('#email').val();
@@ -112,7 +109,7 @@
 
 	        	<h2> Formulario de Contacto </h2>
 
-	        	<form role="form" name="formulario" method="post">
+	      <form role="form" name="formulario" method="post">
 
 	        		<?php echo $mensaje; ?>
 
@@ -129,9 +126,9 @@
 				    <div class="form-group">
 					    <label for="email">Email:</label>
 					    <input type="email" class="form-control" id="email" id="email" placeholder="Ingresa tu Correo">
-					</div>
+					  </div>
 
-					<div class="form-group">
+					  <div class="form-group">
 				      <label for="asunto">Asunto:</label>
 				      <input type="text" class="form-control" id="asunto" id="asunto" placeholder="Ingresa el Asunto de tu Mensaje">
 				    </div>
@@ -142,9 +139,9 @@
 				    </div>
 
 				    <label>Verificación :</label>
-              <div class="g-recaptcha" data-sitekey="CLAVE_DEL_SITIO"></div>	
+            <div class="g-recaptcha" data-sitekey="CLAVE_DEL_SITIO"></div>	
 
-              <br>
+            <br>
 
 				    <input type="submit" class="btn btn-primary" value="Aceptar" id="btnenviar" name="btnenviar" onclick="return valid()">
 
